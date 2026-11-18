@@ -18,8 +18,11 @@ jobs:
           docker rm my-api-container || true
 
       - name: Build the Docker image
-        working-directory: ./DemoVectorSearchWithOllama
-        run: docker build . --file Dockerfile --tag demovectorsearchwithollama:latest
+        run: |
+          DOCKERFILE_PATH=$(find . -name "Dockerfile" | head -n 1)
+          BUILD_DIR=$(dirname "$DOCKERFILE_PATH")
+          echo "Found Dockerfile at: $DOCKERFILE_PATH"
+          docker build -t demovectorsearchwithollama:latest "$BUILD_DIR"
 
       - name: Run new container
         run: |
