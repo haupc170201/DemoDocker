@@ -1,0 +1,23 @@
+@DemoVectorSearchWithOllama_HostAddress = http://localhost:5230
+
+GET {{DemoVectorSearchWithOllama_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{DemoVectorSearchWithOllama_HostAddress}}/api/product
+Content-Type: application/json
+
+[
+  { "name": "Laptop Dell XPS 13", "description": "Laptop mỏng nhẹ 13 inch, phù hợp văn phòng" },
+  { "name": "iPhone 15", "description": "Điện thoại thông minh của Apple" },
+  { "name": "Samsung Galaxy S24", "description": "Điện thoại Android cao cấp" },
+  { "name": "Logitech MX Master 3", "description": "Chuột không dây cho công việc" }
+]
+
+###
+
+GET {{DemoVectorSearchWithOllama_HostAddress}}/api/product/search?query=điện thoại&top=3
+Accept: application/json
+
+###
